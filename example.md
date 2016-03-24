@@ -65,7 +65,7 @@ One then runs, in order, the following make commands
 
 It's a little hackish, but it allows you to create a `docx` AND keep a standalone `html` file.
 
-**Note**: if you use option 2 and set the yaml date option to `'March 24, 2016'`, it will NOT convert. Only option 1 does this. Haven't quite figured out how to do that for option 2. So, if you use option 2, you'll have to fill in a date manually (e.g. `date: March 1, 2016`).
+**Note**: if you use option 2 and set the yaml date option to `r format(Sys.time(), "%B %d, %Y")`, it will NOT convert. Only option 1 does this. Haven't quite figured out how to do that for option 2. So, if you use option 2, you'll have to fill in a date manually (e.g. `date: March 1, 2016`).
 
 
 # Scripts `makefile` and `html2docx.sh`
