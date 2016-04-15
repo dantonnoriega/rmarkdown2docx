@@ -124,10 +124,9 @@ $(document).ready(function () {
 
 <div id="description" class="section level1">
 <h1>Description</h1>
-<p>This set of scripts help convert the output of <code>Rmd</code> or <code>md</code> files to <code>docx</code> files. It is done by creating a clean <code>html</code> file, opening and saving the <code>html</code> to <code>docx</code> in Microsoft Word.</p>
-<p>The workhorse script is <code>makefile</code>.</p>
-<p>Just change the variables to convert any <code>Rmd</code>. There are some caveats (outlined below) if you want to keep a standalone <code>html</code> file.</p>
-<p>In this repo, the <code>makefile</code> convert <code>example.Rmd</code> to <code>example.docx</code>.</p>
+<p>This set of scripts help convert the output of <code>Rmd</code> or <code>md</code> files to <code>docx</code> files. It is done by creating a clean <code>html</code> file, then opening, converting, and saving the <code>html</code> to <code>docx</code> using <a href="https://www.dropbox.com/s/4bwwsgod27w1fjo/word-2004-applescript-reference.pdf?dl=0">Applescript and Microsoft Word</a>.</p>
+<p>The workhorse script is a <code>makefile</code>. Just change the variables to convert any <code>Rmd</code> to <code>docx</code>. However, only clean (not standalone) <code>html</code> files will fully convert. There are some caveats (outlined below) if you want to keep a standalone <code>html</code> file.</p>
+<p>In this repo, the <code>makefile</code> converts <code>example.Rmd</code> to <code>example.docx</code>.</p>
 <div id="the-output-files" class="section level2">
 <h2>The output files</h2>
 <ul>
