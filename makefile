@@ -1,17 +1,19 @@
-MAIN_DIR = ~/Github/rmarkdown2docx/
-FILE_BASE_NAME = example
-CSL_FILE = $(MAIN_DIR)/chicago-author-date.csl
-BIBLIO_FILE = $(MAIN_DIR)/bibliography.bib
+RMD_NAME = example.Rmd
+CSL_FILE = $(CURDIR)/chicago-author-date.csl
+BIBLIO_FILE = $(CURDIR)/bibliography.bib
 
 all: rmd docx
 
-alt: rmd md docx
+alt: rmd docx self
 
-rmd:
-	Rscript --slave -e "rmarkdown::render(input = '$(FILE_BASE_NAME).Rmd')"
+rmd: $(RMD_NAME)
+	Rscript --slave -e "rmarkdown::render(input = '$<', output_options = list('self_contained=FALSE'))"
 
-md:
-	pandoc -f markdown+simple_tables+table_captions+yaml_metadata_block -t html $(MAIN_DIR)/$(FILE_BASE_NAME).md -s -S -o $(FILE_BASE_NAME).html --filter pandoc-citeproc --csl $(CSL_FILE) --bibliography $(BIBLIO_FILE)
+self: $(RMD_NAME)
+	Rscript --slave -e "rmarkdown::render(input = '$<', output_options = list('self_contained=TRUE'))"
 
-docx:
-	sh ./html2docx.sh
+docx: html2docx.sh
+	bash ./html2docx.sh
+
+html2docx.sh:
+	wget https://gist.githubusercontent.com/ultinomics/a905343b4ec15e5e212c/raw/b80f18687c913ddebf575438251904ce817cef90/html2docx.sh
