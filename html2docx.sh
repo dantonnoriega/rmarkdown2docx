@@ -50,12 +50,28 @@ tell application "Microsoft Word"
     set color index of BOR3 to gray25
   end repeat
 
+  # adjust paragraph styles
+  set allPar to paragraphs of active document
+
+  repeat with i in allPar
+    if (style of i is Word style "Normal (Web)" of active document) then
+      select text object of i
+      set style of selection to "Normal"
+      set space after of i to 6
+    end if
+  end repeat
+
   # adjust fonts
   set name of font object of Word style style heading1 of active document to "Calibri"
   set name of font object of Word style style heading2 of active document to "Calibri"
   set name of font object of Word style style heading3 of active document to "Calibri"
+  set bold of font object of Word style style heading1 of active document to true
+  set bold of font object of Word style style heading2 of active document to true
+  set bold of font object of Word style style heading3 of active document to true
   set name of font object of Word style style normal of active document to "Calibri"
+  set name of font object of Word style style strong of active document to "Calibri"
   set name of font object of Word style style emphasis of active document to "Calibri"
+
 
   # scale and center images then break links
   ## first, break links
@@ -84,12 +100,24 @@ tell application "Microsoft Word"
   set selFind to find object of selection
   set forward of selFind to true
   set wrap of selFind to find stop
+
+  ## remove "previous"
   set content of selFind to "Previous"
   execute find selFind
-  delete selection
+  if found of selFind is true then
+    delete selection
+  end if
+
+  ## remove "next"
   set content of selFind to "Next"
   execute find selFind
-  delete selection
+  if found of selFind is true then
+    delete selection
+  end if
+
+  # shrink font of entire document, twice
+  shrink font font object of text object of active document
+  shrink font font object of text object of active document
 
   set view type of view of active window to print view
 
