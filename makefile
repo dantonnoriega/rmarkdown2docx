@@ -14,5 +14,5 @@ docx: html2docx.sh
 	bash ./html2docx.sh
 
 html2docx.sh:
-	wget https://gist.githubusercontent.com/ultinomics/a905343b4ec15e5e212c/raw/b80f18687c913ddebf575438251904ce817cef90/html2docx.sh
+	wget https://gist.githubusercontent.com/ultinomics/a905343b4ec15e5e212c/raw/eaf107c8a87ca66a1f0ac670edcbc208eecfc4e3/html2docx.sh
 
