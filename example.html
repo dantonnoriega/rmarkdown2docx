@@ -124,14 +124,13 @@ $(document).ready(function () {
 
 <div id="description" class="section level1">
 <h1>Description</h1>
-<p>This set of scripts help convert the output of <code>Rmd</code> or <code>md</code> files to <code>docx</code> files. It is done by creating a clean <code>html</code> file, then opening, converting, and saving the <code>html</code> to <code>docx</code> using <a href="https://www.dropbox.com/s/4bwwsgod27w1fjo/word-2004-applescript-reference.pdf?dl=0">Applescript and Microsoft Word</a>.</p>
+<p>This set of scripts help convert the output of <code>Rmd</code> files to <code>docx</code> files. It is done by creating a clean <code>html</code> file, then opening, converting, and saving the <code>html</code> to <code>docx</code> using <a href="https://www.dropbox.com/s/4bwwsgod27w1fjo/word-2004-applescript-reference.pdf?dl=0">Applescript and Microsoft Word</a>.</p>
 <p>The workhorse script is a <code>makefile</code>. Just change the variables to convert any <code>Rmd</code> to <code>docx</code>. However, only clean (not standalone) <code>html</code> files will fully convert. There are some caveats (outlined below) if you want to keep a standalone <code>html</code> file.</p>
 <p>In this repo, the <code>makefile</code> converts <code>example.Rmd</code> to <code>example.docx</code>.</p>
 <div id="the-output-files" class="section level2">
 <h2>The output files</h2>
 <ul>
 <li><code>example.html</code></li>
-<li><code>example.md</code></li>
 <li><code>example.docx</code></li>
 </ul>
 </div>
@@ -161,11 +160,9 @@ $(document).ready(function () {
 </div>
 <div id="how-to-use" class="section level1">
 <h1>How to Use</h1>
-<p>There are two options for going from <code>Rmd</code> to <code>docx</code>. The first <code>make</code> option is <code>all</code> and the second is <code>alt</code>. But before anything, make sure the <code>makefile</code> variables are set up accordingly. Simply change the <code>RMD_NAME</code> variable (and optional <code>CSL_FILE</code> and <code>BIBLIO_FILE</code> variables if you use the <code>alt</code> option) to suite your needs:</p>
-<pre><code>RMD_NAME = example.Rmd
-CSL_FILE = $(CURDIR)/chicago-author-date.csl
-BIBLIO_FILE = $(CURDIR)/bibliography.bib</code></pre>
-<p>In this case, the <code>Rmd</code> file of interest is <code>example.Rmd</code>. We use the GNU <code>make</code> variable for current working directory, <code>$(CURDIR)</code>, to source the csl and bib files. Again, the optional variable are only really necessary if you need a standalone <code>html</code> file and use the <code>alt</code> option.</p>
+<p>There are two options for going from <code>Rmd</code> to <code>docx</code>. The first <code>make</code> option is <code>all</code> and the second is <code>alt</code>. But before anything, make sure the <code>makefile</code> variables are set up accordingly. Simply change the <code>RMD_NAME</code> variable to suite your needs:</p>
+<pre><code>RMD_NAME = example.Rmd</code></pre>
+<p>In this case, the <code>Rmd</code> file of interest is <code>example.Rmd</code>.</p>
 <div id="option-1-all" class="section level2">
 <h2>Option 1: <code>all</code></h2>
 <p>Simply run</p>
@@ -174,7 +171,6 @@ BIBLIO_FILE = $(CURDIR)/bibliography.bib</code></pre>
 <blockquote>
 <p>output options <code>self_contained</code> <strong>must</strong> be <code>FALSE</code>. Otherwise, Microsoft Word will crash during the <code>html</code> to <code>docx</code> conversion. Keep in mind that this is the default option for <code>rmarkdown</code>. But I force it to be true in the <code>makefile</code>.</p>
 </blockquote>
-<p>Also, it doesn’t matter if <code>keep_md: true</code>. I just prefer to have the <code>.md</code> regardless of what I’m doing. Basically, you want to make sure the final <code>html</code> file produce is as simple and clean as possible. The conversion script will do the rest.</p>
 </div>
 <div id="option-2-alt" class="section level2">
 <h2>Option 2: <code>alt</code></h2>
