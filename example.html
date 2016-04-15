@@ -169,7 +169,7 @@ BIBLIO_FILE = $(CURDIR)/bibliography.bib</code></pre>
 <div id="option-1-all" class="section level2">
 <h2>Option 1: <code>all</code></h2>
 <p>Simply run</p>
-<p><code>make all</code></p>
+<pre><code>make all</code></pre>
 <p>Although one can knit an <code>html</code> file from a <code>Rmd</code> file—letting knitr run the <code>pandoc</code> step—there is a caveat.</p>
 <blockquote>
 <p>output options <code>self_contained</code> <strong>must</strong> be <code>FALSE</code>. Otherwise, Microsoft Word will crash during the <code>html</code> to <code>docx</code> conversion. Keep in mind that this is the default option for <code>rmarkdown</code>. But I force it to be true in the <code>makefile</code>.</p>
@@ -180,7 +180,7 @@ BIBLIO_FILE = $(CURDIR)/bibliography.bib</code></pre>
 <h2>Option 2: <code>alt</code></h2>
 <p>You cannot convert a self contained (aka standalone) <code>html</code> file to a <code>docx</code>. (At least I’ve found that it always crashes.) If you want the option to have a standalone <code>html</code> file, then then we use option <code>alt</code>.</p>
 <p>Simply run</p>
-<p><code>make alt</code></p>
+<pre><code>make alt</code></pre>
 <p>This will produce a clean (not self contained) <code>html</code>, create a <code>docx</code> file, then replace the clean <code>html</code> file with a standalone file.</p>
 <p>It’s a little hackish, but it allows you to create a <code>docx</code> AND keep a standalone <code>html</code> file.</p>
 </div>

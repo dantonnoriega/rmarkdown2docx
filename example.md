@@ -52,7 +52,9 @@ In this case, the `Rmd` file of interest is `example.Rmd`. We use the GNU `make`
 
 Simply run
 
-```make all```
+```
+make all
+```
 
 Although one can knit an `html` file from a `Rmd` file---letting knitr run the `pandoc` step---there is a caveat.
 
@@ -66,7 +68,9 @@ You cannot convert a self contained (aka standalone) `html` file to a `docx`. (A
 
 Simply run
 
-```make alt```
+```
+make alt
+```
 
 This will produce a clean (not self contained) `html`, create a `docx` file, then replace the clean `html` file with a standalone file.
 
